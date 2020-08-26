@@ -13,12 +13,12 @@ def calc(option: OptionData, model_type: str = 'bs') -> OptionData:
     r = option.r
     v = option.iv
     cp = option.cp
-    option.calc_time_value()
     if model_type == 'bs':
         greeks = bs_option_model.greeks(s, k, r, t, v, cp)
     elif model_type == 'crr':
         greeks = crr_option_model.greeks(s, k, r, t, v, cp)
     option.set_greeks(greeks)
+    option.calc_time_value()
 
 
 if __name__ == '__main__':
